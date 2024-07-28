@@ -32,8 +32,9 @@ def submit_form():
     teams_to_join = request.form.getlist('teams_to_join')
     resume = request.files['resume']
 
-    # Save the resume to a temporary file
-    resume_path = os.path.join("static", resume.filename)
+    # Save the resume to a temporary file with the full name appended
+    resume_filename = f"{full_name}_{resume.filename}"
+    resume_path = os.path.join("static", resume_filename)
     resume.save(resume_path)
 
     # Generate PDF for volunteer data using ReportLab
@@ -45,7 +46,7 @@ def submit_form():
     volunteer_data_link = url_for('static', filename=f"{full_name}_volunteer_data.pdf", _external=True)
 
     # Generate a link to the resume file
-    resume_link = url_for('static', filename=resume.filename, _external=True)
+    resume_link = url_for('static', filename=resume_filename, _external=True)
 
     # Send notification
     asyncio.run(send_admin_notification(notification_client=notification_client,
