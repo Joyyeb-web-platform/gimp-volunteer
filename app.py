@@ -11,7 +11,7 @@ from datetime import datetime
 app = Flask(__name__)
 
 notification_client = os.environ.get("NOTIFICATION_CLIENT_ID")
-notification_secret = os.environ.get("NOTIFICATION_CLIENT_SECRETE")
+notification_secret = os.environ.get("NOTIFICATION_CLIENT_SECRET")
 
 
 @app.route('/')
