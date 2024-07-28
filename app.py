@@ -29,8 +29,8 @@ def submit_form():
     school = request.form['school']
     place_of_residence = request.form['place_of_residence']
     level = request.form['level']
-    fields_of_coordination = request.form.getlist('fields_of_coordination')
-    teams_to_join = request.form.getlist('teams_to_join')
+    fields_of_coordination = request.form.getlist('fields_of_coordination[]')
+    teams_to_join = request.form.getlist('teams_to_join[]')
     resume = request.files['resume']
 
     # Add timestamp to filename to avoid collisions
