@@ -7,18 +7,18 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 import os
 from app_logic.send_notification_gimp import send_admin_notification, send_client_notification
 
-application = Flask(__name__)
+app = Flask(__name__)
 
 notification_client = os.environ.get("NOTIFICATION_CLIENT_ID")
 notification_secret = os.environ.get("NOTIFICATION_CLIENT_SECRETE")
 
 
-@application.route('/')
+@app.route('/')
 def home():
     return render_template('index.html')
 
 
-@application.route('/submit_volunteer_form', methods=['POST'])
+@app.route('/submit_volunteer_form', methods=['POST'])
 def submit_form():
     full_name = request.form['full_name']
     email = request.form['email']
@@ -114,11 +114,11 @@ def create_volunteer_pdf(filepath, full_name, email, mobile_number, school, plac
     doc.build(elements)
 
 
-@application.route('/success')
+@app.route('/success')
 def success():
     volunteer_name = request.args.get('name', 'Volunteer')
     return render_template('success.html', volunteer_name=volunteer_name)
 
 
 if __name__ == '__main__':
-    application.run(debug=True)
+    app.run(debug=True)
