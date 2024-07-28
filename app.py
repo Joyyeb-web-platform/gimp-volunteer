@@ -20,7 +20,9 @@ def home():
 
 @app.route('/submit_volunteer_form', methods=['POST'])
 def submit_form():
-    full_name = request.form['full_name']
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    full_name = f"{first_name}_{last_name}"
     email = request.form['email']
     mobile_number = request.form['mobile_number']
     school = request.form['school']
@@ -36,7 +38,7 @@ def submit_form():
 
     # Generate PDF for volunteer data using ReportLab
     volunteer_data_pdf_path = os.path.join("static", f"{full_name}_volunteer_data.pdf")
-    create_volunteer_pdf(volunteer_data_pdf_path, full_name, email, mobile_number, school, place_of_residence, level,
+    create_volunteer_pdf(volunteer_data_pdf_path, first_name, last_name, email, mobile_number, school, place_of_residence, level,
                          fields_of_coordination, teams_to_join)
 
     # Generate a link to the PDF file
@@ -52,13 +54,14 @@ def submit_form():
                                         volunteer_resume_link=resume_link))
     asyncio.run(
         send_client_notification(notification_client=notification_client, notification_secret=notification_secret,
-                                 volunteer_name=full_name, volunteer_email=email))
+                                 volunteer_name=first_name, volunteer_email=email))
 
-    return redirect(url_for('success', name=full_name))
+    return redirect(url_for('success', name=first_name))
 
 
-def create_volunteer_pdf(filepath, full_name, email, mobile_number, school, place_of_residence, level,
+def create_volunteer_pdf(filepath, first_name, last_name, email, mobile_number, school, place_of_residence, level,
                          fields_of_coordination, teams_to_join):
+    full_name = f"{first_name} {last_name}"
     doc = SimpleDocTemplate(filepath, pagesize=letter)
     styles = getSampleStyleSheet()
     elements = []
