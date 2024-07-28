@@ -12,6 +12,7 @@
         .progress-bar { width: 25%; }
         .step { font-size: 18px; }
         .logo { width: 150px; height: auto; }
+        .banner { width: 100%; height: auto; }
         .upload-section {
             border: 2px dashed #d1d1d1;
             padding: 20px;
@@ -44,6 +45,7 @@
         <div class="row justify-content-center round">
             <div class="col-lg-10 col-md-12">
                 <div class="card shadow-lg card-1">
+                    <img src="https://ci3.googleusercontent.com/meips/ADKq_NakER5o2US_Bpc3SU2aYEWWFHj_7XQ8t71kP83R11RIAeRGdIrfAuHLdp7mxa6cVS_WQdUGz8CrNpWcTwzQmOzvrYPhim6oogYcCTnnH9EUXfEvR6QQqM38LQHcYvuh7O-9=s0-d-e1-ft#https://d15k2d11r6t6rl.cloudfront.net/pub/npf6/y0n9suqm/nt9/r9p/hav/gimp.png" alt="Banner" class="img-fluid banner">
                     <div class="card-body inner-card">
                         <div class="row justify-content-center">
                             <div class="col-md-10 col text-center">
@@ -142,14 +144,22 @@
                             </div>
                             <div id="step-4" class="hidden">
                                 <div class="form-group">
-                                    <label for="teams_to_join">Join a team</label>
+                                    <label for="teams_to_join">Which team(s) will you like to join</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="teams_to_join[]" value="I.T team" id="it_team">
-                                        <label class="form-check-label" for="it_team">I.T team</label>
+                                        <input class="form-check-input" type="checkbox" name="teams_to_join[]" value="Logistics and Planning" id="logistics">
+                                        <label class="form-check-label" for="logistics">Logistics and Planning</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="teams_to_join[]" value="Project Management Team" id="project_management">
-                                        <label class="form-check-label" for="project_management">Project Management Team</label>
+                                        <input class="form-check-input" type="checkbox" name="teams_to_join[]" value="Finance Team" id="finance">
+                                        <label class="form-check-label" for="finance">Finance Team</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="teams_to_join[]" value="Welfare Team" id="welfare">
+                                        <label class="form-check-label" for="welfare">Welfare Team</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="teams_to_join[]" value="Project Management Team" id="project">
+                                        <label class="form-check-label" for="project">Project Management Team</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="teams_to_join[]" value="Editorial Team" id="editorial">
@@ -159,12 +169,12 @@
                                 <div class="form-group">
                                     <label for="resume">Upload Resume</label>
                                     <div class="upload-section">
-                                        <div>Upload your Resume here<br><small>Files supported: PDF, doc, docx</small><br>Maximum size: 2MB</div>
+                                        <div>Upload your file here<br><small>Files supported: TXT, HTML, CSS</small><br>Maximum size: 2MB</div>
                                         <input type="file" class="form-control-file" id="resume" name="resume" required>
                                     </div>
                                     <div id="file-details" class="file-details hidden">
-                                        <span id="file-name"></span>
-                                        <span id="file-size"></span>
+                                        <span id="file-name">main.scss</span>
+                                        <span id="file-size">2KB</span>
                                         <button type="button" class="btn btn-danger btn-sm" onclick="removeFile()">Remove</button>
                                     </div>
                                 </div>
