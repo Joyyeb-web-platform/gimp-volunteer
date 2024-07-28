@@ -159,7 +159,7 @@
                                 <div class="form-group">
                                     <label for="resume">Upload Resume</label>
                                     <div class="upload-section">
-                                        <div>Upload your file here<br><small>Files supported: PDF, doc, docx</small><br>Maximum size: 2MB</div>
+                                        <div>Upload your Resume here<br><small>Files supported: PDF, doc, docx</small><br>Maximum size: 2MB</div>
                                         <input type="file" class="form-control-file" id="resume" name="resume" required>
                                     </div>
                                     <div id="file-details" class="file-details hidden">
@@ -217,7 +217,10 @@
     });
 
     function removeFile() {
-        document.getElementById('resume').value = '';
+        const resumeInput = document.getElementById('resume');
+        resumeInput.value = '';
+        document.getElementById('file-name').textContent = '';
+        document.getElementById('file-size').textContent = '';
         document.getElementById('file-details').classList.add('hidden');
     }
 </script>
