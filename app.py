@@ -6,6 +6,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 import os
 from app_logic.send_notification_gimp import send_admin_notification, send_client_notification
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -32,8 +33,9 @@ def submit_form():
     teams_to_join = request.form.getlist('teams_to_join')
     resume = request.files['resume']
 
-    # Save the resume to a temporary file with the full name appended
-    resume_filename = f"{full_name}_{resume.filename}"
+    # Add timestamp to filename to avoid collisions
+    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+    resume_filename = f"{full_name}_{timestamp}_{resume.filename}"
     resume_path = os.path.join("static", resume_filename)
     resume.save(resume_path)
 
