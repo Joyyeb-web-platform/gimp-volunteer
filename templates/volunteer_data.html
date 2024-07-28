@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Data</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: #007bff;
+            color: #ffffff;
+            padding: 10px 0;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .header h1 {
+            margin: 0;
+            padding: 10px 20px;
+        }
+
+        .content p {
+            font-size: 1.1em;
+            color: #333333;
+        }
+
+        .content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .content ul li {
+            background-color: #e9ecef;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Volunteer Information</h1>
+        </div>
+        <div class="content">
+            <p><strong>Full Name:</strong> {{ full_name }}</p>
+            <p><strong>Email:</strong> {{ email }}</p>
+            <p><strong>Mobile Number:</strong> {{ mobile_number }}</p>
+            <p><strong>School:</strong> {{ school }}</p>
+            <p><strong>Place of Residence:</strong> {{ place_of_residence }}</p>
+            <p><strong>Level:</strong> {{ level }}</p>
+            <p><strong>Fields of Coordination:</strong></p>
+            <ul>
+                {% for field in fields_of_coordination %}
+                <li>{{ field }}</li>
+                {% endfor %}
+            </ul>
+            <p><strong>Teams to Join:</strong></p>
+            <ul>
+                {% for team in teams_to_join %}
+                <li>{{ team }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

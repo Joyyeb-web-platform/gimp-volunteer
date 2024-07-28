@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission Successful</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <!-- Confetti.js -->
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js@0.0.18/dist/index.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+            padding-top: 50px;
+        }
+        #confetti-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+    <div id="confetti-canvas"></div>
+    <div class="container">
+        <div class="jumbotron">
+            <h1 class="display-4">Success!</h1>
+            <p class="lead">Hi {{ volunteer_name }}, your form has been submitted successfully.</p>
+            <hr class="my-4">
+            <p>Thank you for volunteering for the Goalpha Intern Mentorship Program. Please check your email for a confirmation notification.</p>
+        </div>
+        <div class="row">
+            <div class="col">
+                <a href="https://gimpofficial.com" class="btn btn-primary btn-lg">
+                    <i class="fas fa-globe"></i> Visit our Website
+                </a>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <a href="https://facebook.com/gimp" class="btn btn-primary btn-lg">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://twitter.com/gimp" class="btn btn-info btn-lg">
+                    <i class="fab fa-twitter"></i> Twitter
+                </a>
+                <a href="https://instagram.com/gimp" class="btn btn-danger btn-lg">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Confetti.js script -->
+    <script>
+        window.onload = function() {
+            var confettiSettings = { target: 'confetti-canvas' };
+            var confetti = new ConfettiGenerator(confettiSettings);
+            confetti.render();
+        };
+    </script>
+</body>
+</html>

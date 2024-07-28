@@ -1,0 +1,4 @@
+flask
+notificationapi-python-server-sdk
+reportlab
+
