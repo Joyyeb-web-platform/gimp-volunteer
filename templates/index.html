@@ -11,6 +11,7 @@
         .progress-bar-container { margin-top: 20px; }
         .progress-bar { width: 25%; }
         .step { font-size: 18px; }
+        .logo { width: 150px; height: auto; }
     </style>
 </head>
 <body>
@@ -22,7 +23,7 @@
                     <div class="card-body inner-card">
                         <div class="row justify-content-center">
                             <div class="col-md-10 col text-center">
-                                <img src="https://gimpofficial.com/wp-content/uploads/2023/06/GIMP-LOGO-copy.png" alt="GIMP Logo" class="img-fluid mb-4" height="50px" width="50px">
+                                <img src="https://gimpofficial.com/wp-content/uploads/2023/06/GIMP-LOGO-copy.png" alt="GIMP Logo" class="img-fluid mb-4 logo">
                                 <h3 class="font-weight-bold ml-md-0 mx-auto text-center text-sm-left">GIMP 2024 VOLUNTEERS</h3>
                                 <p class="mt-md-4 ml-md-0 ml-2 text-center text-sm-left">This form is to collect information for the volunteers of GIMP 2024. Call or text +233557009926 or +233552234144 for any further inquiries.</p>
                             </div>
@@ -43,18 +44,6 @@
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="username">Username</label>
-                                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your Username" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your Password" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="confirm_password">Confirm Password</label>
-                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirm your Password" required>
                                 </div>
                                 <button type="button" class="btn btn-primary" onclick="nextStep(1)">Next</button>
                             </div>
@@ -140,18 +129,6 @@
                                         <input class="form-check-input" type="checkbox" name="teams_to_join" value="Editorial Team" id="editorial">
                                         <label class="form-check-label" for="editorial">Editorial Team</label>
                                     </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="teams_to_join" value="Publicity Team" id="publicity">
-                                        <label class="form-check-label" for="publicity">Publicity Team</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="teams_to_join" value="Welfare Team" id="welfare">
-                                        <label class="form-check-label" for="welfare">Welfare Team</label>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="passport_photo">Upload passport photo</label>
-                                    <input type="file" class="form-control-file" id="passport_photo" name="passport_photo" required>
                                 </div>
                                 <button type="button" class="btn btn-secondary" onclick="prevStep(3)">Back</button>
                                 <button type="submit" class="btn btn-success">Submit</button>
@@ -163,31 +140,22 @@
         </div>
     </div>
 </div>
-
 <script>
-    let currentStep = 1;
-
-    function nextStep(step) {
-        document.getElementById('step-' + step).classList.add('hidden');
-        document.getElementById('step-' + (step + 1)).classList.remove('hidden');
-        updateProgressBar(step + 1);
+    function nextStep(currentStep) {
+        document.getElementById(`step-${currentStep}`).classList.add('hidden');
+        document.getElementById(`step-${currentStep + 1}`).classList.remove('hidden');
+        document.getElementById('progress-bar').style.width = `${(currentStep + 1) * 25}%`;
     }
 
-    function prevStep(step) {
-        document.getElementById('step-' + (step + 1)).classList.add('hidden');
-        document.getElementById('step-' + step).classList.remove('hidden');
-        updateProgressBar(step);
-    }
-
-    function updateProgressBar(step) {
-        const progressBar = document.getElementById('progress-bar');
-        const stepText = ['Step 1', 'Step 2', 'Step 3', 'Finish'];
-        progressBar.style.width = (step * 25) + '%';
-        document.querySelectorAll('.step').forEach((elem, index) => {
-            elem.innerText = stepText[index];
-            elem.classList.toggle('font-weight-bold', index === step - 1);
-        });
+    function prevStep(currentStep) {
+        document.getElementById(`step-${currentStep}`).classList.add('hidden');
+        document.getElementById(`step-${currentStep - 1}`).classList.remove('hidden');
+        document.getElementById('progress-bar').style.width = `${(currentStep - 1) * 25}%`;
     }
 </script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-g4QCVp5FLvQJuB+1x5S4FKu67UAcU9vB4KOzI06sn6v6ZRq5anRmN57EljE65XgD" crossorigin="anonymous"></script>
 </body>
 </html>
