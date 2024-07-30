@@ -33,15 +33,19 @@ def submit_form():
     teams_to_join = request.form.getlist('teams_to_join[]')
     resume = request.files['resume']
 
+    # Replace spaces with underscores in the original filename
+    sanitized_filename = resume.filename.replace(" ", "_")
+
     # Add timestamp to filename to avoid collisions
     timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-    resume_filename = f"{full_name}_{timestamp}_{resume.filename}"
+    resume_filename = f"{full_name}_{timestamp}_{sanitized_filename}"
     resume_path = os.path.join("static", resume_filename)
     resume.save(resume_path)
 
     # Generate PDF for volunteer data using ReportLab
     volunteer_data_pdf_path = os.path.join("static", f"{full_name}_volunteer_data.pdf")
-    create_volunteer_pdf(volunteer_data_pdf_path, first_name, last_name, email, mobile_number, school, place_of_residence, level,
+    create_volunteer_pdf(volunteer_data_pdf_path, first_name, last_name, email, mobile_number, school,
+                         place_of_residence, level,
                          fields_of_coordination, teams_to_join)
 
     # Generate a link to the PDF file
